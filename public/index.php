@@ -56,5 +56,5 @@ $response = $kernel->handle(
 );
 
 $response->send();
-
+Log::debug('eee');
 $kernel->terminate($request, $response);
