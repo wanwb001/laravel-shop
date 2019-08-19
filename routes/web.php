@@ -43,3 +43,13 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
 Route::post('payment/alipay/notify', 'PaymentController@alipayNotify')->name('payment.alipay.notify');
 Route::post('payment/wechat/notify', 'PaymentController@wechatNotify')->name('payment.wechat.notify');
 
+
+Route::get('/sendSMS', function() {
+    $testService = resolve('TestService');
+    $smsContent = '【果冻想】认真玩技术的地方。';
+    $testService->test( $smsContent);
+
+    $logService = resolve('LogService');
+    $smsContent2 = '【纠结】认真玩技术的地方。';
+    $logService->log( $smsContent2);
+});

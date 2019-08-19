@@ -34,12 +34,12 @@ class OrdersController extends Controller
      * @param Content $content
      * @return Content
      */
-    public function show($id, Content $content)
+    public function show(Order $order, Content $content)
     {
         return $content
-            ->header('Detail')
-            ->description('description')
-            ->body($this->detail($id));
+            ->header('查看订单')
+            // body 方法可以接受 Laravel 的视图作为参数
+            ->body(view('admin.orders.show', ['order' => $order]));
     }
 
     /**
@@ -98,6 +98,7 @@ class OrdersController extends Controller
         $grid->disableCreateButton();
         $grid->actions(function ($actions) {
             // 禁用删除和编辑按钮
+
             $actions->disableDelete();
             $actions->disableEdit();
         });
